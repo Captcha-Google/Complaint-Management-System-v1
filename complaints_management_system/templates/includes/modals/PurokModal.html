@@ -1,0 +1,27 @@
+<div class="modal fade" id="id_UpdatePurokModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="id_modalPurok_header">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="id_UpdatePurokForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="hidden" id="purok_id" name="purok_id">
+                        <label for="{{ form.purok_name.auto_id }}">{{ form.purok_name.label }}</label>
+                        {{ form.purok_name }}
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

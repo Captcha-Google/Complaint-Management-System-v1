@@ -1,0 +1,36 @@
+<div class="modal fade" id="id_UpdateRespondentModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="id_modalRespondent_header">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="id_UpdateRespondentForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="hidden" id="respondent_id" name="respondent_id">
+                        <label for="{{ form.respondent_name.auto_id }}">{{ form.respondent_name.label }}</label>
+                        {{ form.respondent_name }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.respondent_purok.auto_id }}">{{ form.respondent_purok.label }}</label>
+                        {{ form.respondent_purok }}
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="{{ form.respondent_barangay.auto_id }}">{{ form.respondent_barangay.label }}</label>
+                        {{ form.respondent_barangay }}
+                      </div>
+        
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

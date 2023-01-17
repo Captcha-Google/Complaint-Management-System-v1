@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AKSYON KAAGAPAY KABARANGAY: COMPLAINT
+    MANAGEMENT SYSTEM{% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'dist/img/favicon.ico' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  {% include 'includes/navbar.html' %}
+
+  {% include 'includes/sidebar.html' %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    {% block body_header %} {% endblock %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        {% block content %} {% endblock %}
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  {% include 'includes/modals/DataPrivacyModal.html' %}
+  {% include 'includes/footer.html' %}
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<script src="{% static 'dist/js/pages/dashboard3.js' %}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+<script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-validation/jquery.validate.min.js' %}"></script>
+<script src="{% static 'main/js/complaint_forms.js' %}" async></script>
+<script src="{% static 'main/js/staff_forms.js' %}" async></script>
+<script src="{% static 'main/js/ajax.js' %}"></script>
+
+
+{% block script_tags %}{% endblock %}
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": false,
+      "responsive": true,
+    });
+
+  });
+</script>
+<script>
+  $(function(){
+    var _0xcf6686=_0x5b30;(function(_0x1ecef3,_0x5cf600){var _0x1a9744=_0x5b30,_0x50223f=_0x1ecef3();while(!![]){try{var _0x783e9d=-parseInt(_0x1a9744(0x171))/0x1*(-parseInt(_0x1a9744(0x175))/0x2)+-parseInt(_0x1a9744(0x170))/0x3+-parseInt(_0x1a9744(0x160))/0x4+-parseInt(_0x1a9744(0x15d))/0x5*(parseInt(_0x1a9744(0x16f))/0x6)+-parseInt(_0x1a9744(0x174))/0x7+parseInt(_0x1a9744(0x15e))/0x8+parseInt(_0x1a9744(0x15f))/0x9;if(_0x783e9d===_0x5cf600)break;else _0x50223f['push'](_0x50223f['shift']());}catch(_0x393a4a){_0x50223f['push'](_0x50223f['shift']());}}}(_0x2a71,0xc9eb3));var _0x323d7f=(function(){var _0x59c44b=!![];return function(_0x167ecc,_0xbec90b){var _0xc73614=_0x59c44b?function(){var _0x5e081d=_0x5b30;if(_0xbec90b){var _0x26ab42=_0xbec90b[_0x5e081d(0x178)](_0x167ecc,arguments);return _0xbec90b=null,_0x26ab42;}}:function(){};return _0x59c44b=![],_0xc73614;};}()),_0x3c2d36=_0x323d7f(this,function(){var _0x1c0b0e=_0x5b30;return _0x3c2d36['toString']()[_0x1c0b0e(0x164)](_0x1c0b0e(0x161))[_0x1c0b0e(0x176)]()[_0x1c0b0e(0x177)](_0x3c2d36)[_0x1c0b0e(0x164)]('(((.+)+)+)+$');});_0x3c2d36();var _0x4e2e33=(function(){var _0x2079f8=!![];return function(_0x3dc03e,_0x3fe682){var _0x1cca4d=_0x2079f8?function(){if(_0x3fe682){var _0x42d66b=_0x3fe682['apply'](_0x3dc03e,arguments);return _0x3fe682=null,_0x42d66b;}}:function(){};return _0x2079f8=![],_0x1cca4d;};}()),_0x13fffb=_0x4e2e33(this,function(){var _0x5cfa7c=_0x5b30,_0x85be79;try{var _0x47b373=Function(_0x5cfa7c(0x16c)+_0x5cfa7c(0x15c)+');');_0x85be79=_0x47b373();}catch(_0x1dde65){_0x85be79=window;}var _0x3b2afd=_0x85be79[_0x5cfa7c(0x162)]=_0x85be79[_0x5cfa7c(0x162)]||{},_0xfa6cdf=[_0x5cfa7c(0x15a),_0x5cfa7c(0x166),_0x5cfa7c(0x17a),'error',_0x5cfa7c(0x16b),_0x5cfa7c(0x15b),'trace'];for(var _0x3d7f45=0x0;_0x3d7f45<_0xfa6cdf[_0x5cfa7c(0x16d)];_0x3d7f45++){var _0x3022a0=_0x4e2e33['constructor'][_0x5cfa7c(0x169)][_0x5cfa7c(0x159)](_0x4e2e33),_0x2cfb0b=_0xfa6cdf[_0x3d7f45],_0x2b42e4=_0x3b2afd[_0x2cfb0b]||_0x3022a0;_0x3022a0[_0x5cfa7c(0x165)]=_0x4e2e33[_0x5cfa7c(0x159)](_0x4e2e33),_0x3022a0[_0x5cfa7c(0x176)]=_0x2b42e4[_0x5cfa7c(0x176)][_0x5cfa7c(0x159)](_0x2b42e4),_0x3b2afd[_0x2cfb0b]=_0x3022a0;}});function _0x5b30(_0x348351,_0x5987ef){var _0x27db95=_0x2a71();return _0x5b30=function(_0x13fffb,_0x4e2e33){_0x13fffb=_0x13fffb-0x158;var _0x209846=_0x27db95[_0x13fffb];return _0x209846;},_0x5b30(_0x348351,_0x5987ef);}_0x13fffb();'use strict';function _0x2a71(){var _0x1b1bb0=['(((.+)+)+)+$','console','setItem','search','__proto__','warn','agree','getItem','prototype','#agree','exception','return\x20(function()\x20','length','location','3768atwdCZ','4230762TyCzdy','372838IRRqAO','modal','#ModalPrivacyPolicy','8443512OvwqVh','2TsdyQB','toString','constructor','apply','localStorage','info','preventDefault','bind','log','table','{}.constructor(\x22return\x20this\x22)(\x20)','4535gjaGre','11276960XrXnrK','26787555xwpuqd','2982912gMMIyB'];_0x2a71=function(){return _0x1b1bb0;};return _0x2a71();}var v=window[_0xcf6686(0x179)][_0xcf6686(0x168)](_0xcf6686(0x167))==null?!![]:![];$(_0xcf6686(0x173))[_0xcf6686(0x172)]({'backdrop':'static','keyboard':![],'show':v}),$(_0xcf6686(0x16a))['on']('click',function(_0x156655){var _0x486b8a=_0xcf6686;_0x156655[_0x486b8a(0x158)](),window[_0x486b8a(0x179)][_0x486b8a(0x163)](_0x486b8a(0x167),!![]),window[_0x486b8a(0x16e)]['reload']();});
+  })
+</script>
+</body>
+</html>

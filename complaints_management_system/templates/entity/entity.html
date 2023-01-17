@@ -1,0 +1,90 @@
+{% extends './../base/base.html' %}
+{% load static %}
+
+{% block body_header %}
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Entities</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item active">Entities</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+{% endblock  %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Entities</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Entity Name</th>
+              <th>Date Added</th>
+              <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entity_info%}
+              <tr>
+                <td>{{ entity.entity_id }}</td>
+                <td>{{ entity.entity_name }}</td>
+                <td>{{ entity.date_added }}</td>
+                <td class="text-center">
+                  <div class="btn-group">
+                    <form method="post">
+                      {% csrf_token %}
+                      <button type="button" id="update_entity" data-id="{{ entity.entity_id }}" class="btn btn-default btn-sm">Update</button>
+                    </form>
+                    <form method="post">
+                      {% csrf_token %}
+                      <button type="button" id="delete_entity" data-id="{{ entity.entity_id }}" class="btn btn-default btn-sm">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>#</th>
+                <th>Entity Name</th>
+                <th>Date Added</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+</div>
+{% include './../includes/modals/EntityModal.html' %}
+{% endblock %}
+
+{% block script_tags %}
+  <script src="{% static 'main/js/entity_ajax.js' %}"></script>
+{% endblock %}

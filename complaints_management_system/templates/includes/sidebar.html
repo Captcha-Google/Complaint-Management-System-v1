@@ -1,0 +1,142 @@
+  {% load static %}
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar main-sidebar-custom sidebar-dark-success elevation-3">
+    <!-- Brand Logo -->
+    <a href="{% url 'dashboard' %}" class="brand-link">
+      <img src="{% static '/dist/img/logo.png' %}" alt="COMPLAINT MANAGEMENT SYSTEM" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">C-M-S</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{% static '/dist/img/logo.png' %}" class="img-circle elevation-2" alt="{{ request.user.username }}">
+            </div>
+        <div class="info">
+          <a href="#" class="d-block">Session User: {{ request.user.username|upper }}</a>
+          <a hreg="#" class="d-block">{% if request.user.entity == NULL %} Type: ADMIN / STAFF {% else %} Entity: {{ request.user.entity|upper }} {% endif %}</a>
+        </div>
+      </div>
+      <!-- SidebarSearch Form -->
+      <div class="form-inline mt-3">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="{% url 'dashboard' %}" class="nav-link {% if request.path == '/dashboard/' %} active {% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-header"><a href="{% url 'complaint' %}">Complaints</a></li>
+
+          {% if request.user.is_superuser or request.user.is_staff %}
+          <li class="nav-item">
+            <a href="{% url 'add_complaint' %}" class="nav-link {% if request.path == '/add_complaint/' %} active {% endif %}">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Add Complaints</p>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a href="{% url 'complaint' %}" class="nav-link {% if request.path == '/complaint/' %} active {% endif %}">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Manage Complaints</p>
+            </a>
+          </li>
+
+          {% if request.user.is_superuser or request.user.is_staff %}
+          <li class="nav-header">Complainants</li>
+          <li class="nav-item">
+            <a href="{% url 'add_complainant' %}" class="nav-link {% if request.path == '/add_complainant/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Add Complainants</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'complainant' %}" class="nav-link {% if request.path == '/complainant/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Manage Complainants</p>
+            </a>
+          </li>
+
+          <li class="nav-header">Entities</li>
+          <li class="nav-item">
+            <a href="{% url 'add_entity' %}" class="nav-link {% if request.path == '/add_entity/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Add Entity</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'entities' %}" class="nav-link {% if request.path == '/entities/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Manage Entities</p>
+            </a>
+          </li>
+
+          <!-- <li class="nav-header">Positions</li>
+          <li class="nav-item">
+            <a href="{% url 'add_position' %}" class="nav-link {% if request.path == '/add_position/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Add Positions</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'position' %}" class="nav-link {% if request.path == '/position/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Manage Positions</p>
+            </a>
+          </li> -->
+
+          <li class="nav-header">Purok</li>
+          <li class="nav-item">
+            <a href="{% url 'add_purok' %}" class="nav-link {% if request.path == '/add_purok/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Add Purok</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'purok' %}" class="nav-link {% if request.path == '/purok/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Manage Purok</p>
+            </a>
+          </li>
+
+          <li class="nav-header">Respondents</li>
+          <li class="nav-item">
+            <a href="{% url 'add_respondent' %}" class="nav-link {% if request.path == '/add_respondent/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Add Respondent</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'respondent' %}" class="nav-link {% if request.path == '/respondent/' %} active {% endif %}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Manage Respondents</p>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+
+    <div class="sidebar-custom d-flex flex-row">
+          <!-- <span style="color: white; font-weight:bold; text-decoration:underline;">{{ request.user }}</span> -->
+          <a href="{% url 'logout' %}" class="btn btn-success hide-on-collapse pos-right">Logout</a>
+    </div>
+    <!-- /.sidebar-custom -->
+  </aside>

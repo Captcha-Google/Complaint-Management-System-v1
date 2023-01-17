@@ -1,0 +1,150 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Manage Complaints
+{% endblock %}
+
+
+{% block body_header %}
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Complaints</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Complaints</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Complaints Management Table</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr class="text-center">
+              <th>Complainant</th>
+              <th>Respondent</th>
+              <th>Case No.</th>
+              <th>Complaint Type</th>
+              <th>Hearing Schedule</th>
+              <th>Complainant Purok</th>
+              <th>Complaint Status</th>
+              <th>Complaint Description</th>
+              <th>Settlement Description</th>
+              <th>Date Complaint</th>
+              <th>Print Buttons</th>
+              <th>Print Buttons</th>
+              {% if request.user.is_superuser or request.user.is_staff %}
+              <th>Action</th>
+              {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+              {% for complaint in complaints %}
+                <tr>
+                  <td>{{ complaint.complainant }}</td>
+                  <td>{{ complaint.respondent  }}</td>
+                  <td>{{ complaint.case_no }}</td>
+                  <td>
+                    {% if complaint.complaint_type == 'Minor Complaint' %}
+                    <span class="badge bg-success">{{ complaint.complaint_type }}</span>
+                    {% else %}
+                    <span class="badge bg-danger">{{ complaint.complaint_type }}</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ complaint.hearing_schedule }}</td>
+                  <td>{{ complaint.complainant.complainant_purok }}</td>
+                  <td class="text-center">
+                    {% if complaint.complaint_status == 'Endorsed'%}
+                    <span class="badge bg-warning p-2">{{ complaint.complaint_status }}</span>
+                    {% elif complaint.complaint_status == 'First Meeting' or complaint.complaint_status == 'Second Meeting' or complaint.complaint_status == 'Third Meeting' %}
+                    <span class="badge bg-success p-2">{{ complaint.complaint_status }}</span>
+                    {% else %}
+                    <span class="badge bg-white p-2">{{ complaint.complaint_status }} 🥳</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ complaint.complaint_desc | truncatechars:90 }}</td>
+                  <td>{{ complaint.settlement_desc | truncatechars:90 }}</td>
+                  <td>{{ complaint.date_complaint }}</td>
+                  <td>
+                  <div class="btn-group">
+                      <a href="{% url 'generate_complainant_form' id=complaint.complaint_id %}" class="btn btn-default btn-sm" target="_blank">Complainant Form</a>
+                      <a href="{% url 'generate_summon' id=complaint.complaint_id %}" class="btn btn-default  btn-sm" target="_blank">Hearing Form</a>
+                      <a href="#" class="btn btn-default btn-sm">Proceed to Conciliation</a>
+                  </div>
+                </td>
+                <td>
+                    <div class="btn-group">
+                      <a href="{% url 'generate_amicable_settlement' id=complaint.complaint_id %}" class="btn btn-default  btn-sm" target="_blank">Amicable Settlement</a>
+                      <a href="{% url 'generate_officer_return' id=complaint.complaint_id %}" class="btn btn-default  btn-sm" target="_blank">Officer Return</a>
+                      <a href="{% url 'generate_fileaction_report' id=complaint.complaint_id %}" class="btn btn-default  btn-sm" target="_blank">File Action Report</a>
+                    </div>
+                </td>
+                 {% if request.user.is_superuser or request.user.is_staff %}
+                  <td>
+                     <div class="btn-group">
+                        <form method="post">
+                          {% csrf_token %}
+                          <button type="button" id="update_complaint" data-id="{{ complaint.complaint_id }}" class="btn btn-default btn-sm">Update</button>
+                        </form>
+                        <form method="post">
+                          {% csrf_token %}
+                          <button type="button" id="delete_complaint" data-id="{{ complaint.complaint_id }}" class="btn btn-default  btn-sm">Delete</button>
+                        </form>
+                     </div>
+                  </td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr class="text-center">
+                <th>Complainant Name</th>
+                <th>Respondents</th>
+                <th>Case No.</th>
+                <th>Complaint Type</th>
+                <th>Hearing Schedule</th>
+                <th>Complainant Purok</th>
+                <th>Complaint Status</th>
+                <th>Complaint Description</th>
+                <th>Settlement Description</th>
+                <th>Date Complaint</th>
+                <th>Print Buttons</th>
+                <th>Print Buttons</th>
+                {% if request.user.is_superuser or request.user.is_staff %}
+                <th>Action</th>
+                {% endif %}
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+{% if request.user.is_superuser or request.user.is_staff %}
+{% include './../includes/modals/ComplaintModal.html' %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AKSYON KAAGAPAY KABARANGAY: COMPLAINT
+    MANAGEMENT SYSTEM | Registration Page</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'dist/img/logo.png' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+    toastr.options = {
+      "closeButton": true,
+      "debug": true,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+  </script>
+</head>
+<body class="hold-transition register-page">
+<div class="mt-5">
+  <div class="register-logo">
+    <a href="#"><b>COMPLAINT
+        MANAGEMENT SYSTEM</b></a>
+  </div>
+
+  <div class="card rounded-corner">
+    <div class="card-body register-card-body">
+
+      {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+              <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <span><i class="icon fas fa-exclamation-triangle"></i> Warning!</span>
+                {{ error }}
+              </div>
+              {% endfor %}
+          {% endfor %}
+      {% endif %}
+
+      <p class="login-box-msg">Sign up to start your session</p>
+
+
+      <form method="post" id="register_form">
+        {% csrf_token %}
+
+        <label id="{{ form.first_name.auto_id }}" class="m-0">Firstname</label>
+        <div class="input-group mb-1">
+         {{ form.first_name }}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+
+        <label id="{{ form.last_name.auto_id }}" class="m-0">Lastname</label>
+        <div class="input-group mb-1">
+        {{ form.last_name }}
+            <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+            </div>
+        </div>
+
+        <label id="{{ form.username.auto_id }}" class="m-0">Username</label>
+        <div class="input-group mb-1">
+        {{ form.username }}
+            <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+            </div>
+        </div>
+
+        <label id="{{ form.email.auto_id }}" class="m-0">Email Address</label>
+        <div class="input-group mb-1">
+         {{ form.email }}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+
+        <label id="{{ form.entity.auto_id }}" class="m-0">Government Entity</label>
+         <div class="input-group mb-1">
+         {{ form.entity }}
+         <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+
+        <label id="{{ form.password1.auto_id }}" class="m-0">Password</label>
+        <div class="input-group mb-1">
+            {{ form.password1 }}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <label id="{{ form.password2.auto_id }}" class="m-0">Confirm Password</label>
+        <div class="input-group mb-1">
+            {{ form.password2 }}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="terms" value="agree" checked>
+              <label for="agreeTerms">
+               I agree to the <a href="#">terms</a> and <a href="">Condition</a>
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <p class="mb-1 mt-3">
+        I already have an account? <a href="{% url 'login' %}">Click here!</a>
+      </p>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<!-- <script src="{% static 'main/js/register.js' %}"></script> -->
+<script>
+    var form_fields = document.getElementsByTagName("input")
+    var select = document.getElementsById("id_entity")
+    form_fields[1].placeholder = 'Firstname'
+    form_fields[2].placeholder = 'Lastname'
+    form_fields[3].placeholder = 'Username'
+    form_fields[4].placeholder = 'Email Address'
+    form_fields[5].placeholder = 'Password'
+    form_fields[6].placeholder = 'Repeat Password'
+    for(var field in form_fields){
+        form_fields[field].className = 'form-control';
+    }
+
+    select.className = 'form-control';
+</script>
+</body>
+</html>

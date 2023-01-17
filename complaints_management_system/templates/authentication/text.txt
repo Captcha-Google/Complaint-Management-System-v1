@@ -1,0 +1,17 @@
+<script>
+    $(function(){
+      'use strict';
+  
+      var v = (window.localStorage.getItem('agree') == null)? true:false;
+  
+      $("#ModalPrivacyPolicy").modal({backdrop: 'static', keyboard: false,show: v})
+  
+      $("#agree").on("click", function(e){
+        e.preventDefault()
+  
+        window.localStorage.setItem('agree',true)
+  
+        window.location.reload()
+      })
+    })
+  </script>

@@ -1,0 +1,169 @@
+{% extends './../base/base.html' %}
+{% block title %}COMPLAINT 
+MANAGEMENT SYSTEM{% endblock %}
+{% block content %}
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Complaint Management System</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-4 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{ count_entity }}</h3>
+
+          <p>Entities</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person"></i>
+        </div>
+        <a href="{% url 'position' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{ count_complaints }}</h3>
+
+          <p>Complaints</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-clipboard"></i>
+        </div>
+        <a href="{% url 'complaint' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <!-- <div class="col-lg-3 col-6">
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{ count_user }}</h3>
+
+          <p>Users</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div> -->
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{ count_purok }}</h3>
+
+          <p>Purok</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-location"></i>
+        </div>
+        <a href="{% url 'purok' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+  {{ purok_info.purok_id }}
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">Complaint/s Analytics</h3>
+            <a href="{% url 'generate_complaints_report' %}" target="_blank" class="btn btn-info">View Report</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <p class="d-flex flex-column">
+              <span class="text-bold text-lg">{{ count_complaints|safe }}</span>
+              <span>Complaint/s Over Time</span>
+            </p>
+            <p class="ml-auto d-flex flex-column text-right">
+              {% if latest_count == 0 %}
+              <span class="text-danger">
+                <i class="fas fa-arrow-down"></i> 0
+              </span>
+              {% else %}
+                <span class="text-success">
+                  <i class="fas fa-arrow-up"></i> {{ latest_count }}
+                </span>
+              {% endif %}
+              <span class="text-muted">Complaint/s added this day</span>
+            </p>
+          </div>
+          <!-- /.d-flex -->
+         
+          <div class="position-relative mb-4">
+            <canvas id="complaint_chart" height="200" data-url="{% url 'complaint_chart' %}"></canvas>
+          </div>
+
+          <div class="d-flex flex-column justify-content-end">
+            <span class="mr-2">
+              <i class="fas fa-square" style="color: #28a745;"></i> Low cases 
+            </span>
+
+            <span class="mr-2">
+              <i class="fas fa-square" style="color: #ffc107;"></i> Moderate cases 
+            </span>
+
+            <span class="mr-2">
+              <i class="fas fa-square" style="color: #dc3545;"></i> High cases 
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-md-6 -->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header border-0">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">Complaint/s by Purok Analytics</h3>
+            <!-- <a href="#" class="btn btn-info">View Report</a> -->
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <p class="d-flex flex-column">
+              <span class="text-bold text-lg">{{ count_complaints|safe }}</span>
+              <span>Complaint/s Over Time</span>
+            </p>
+          </div>
+          <!-- /.d-flex -->
+
+          <div class="position-relative mb-4">
+            <canvas id="purok_chart" height="200" data-url="{% url 'purok_chart' %}"></canvas>
+          </div>
+
+          <div class="d-flex flex-column justify-content-end">
+            <span class="mr-2">
+              <i class="fas fa-square" style="color: #28a745;"></i> # of Complaint/s by purok
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- /.card -->
+
+    </div>
+    <!-- /.col-md-6 -->
+  </div>
+{% endblock  %}

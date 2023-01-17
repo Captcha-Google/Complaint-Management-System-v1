@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Action Report</title>
+    <style type="text/css">
+        @page template {
+            size: a5 portrait;
+            left: 6cm;
+            right: 3cm;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            font-family:'Times New Roman', Times, serif;
+            font-size: 15px;
+        }
+
+        .header span{
+            display: block;
+            text-align: center;
+            line-height: 0px;
+            padding-bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .person-header span{
+            display: block;
+            text-align: left;
+            line-height: 0px;
+            padding-bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .add_border{
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+        }
+
+        .lineHeight{
+            line-height: 1px;
+        }
+
+        .boldFont{
+            font-weight: bold;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        .addLine{
+            text-decoration: underline;
+        }
+
+        .main-body{
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span>Republic of the Philippines</span>
+        <span>Province of Cotabato</span>
+        <span>City/Municipality of Mlang</span>
+        <span class="boldFont">Barangay Dalipe, Mlang, North Cotabato</span>
+        <span class="boldFont">Office of the Barangay Captain</span>
+    </div>
+    <br>
+    <div class="person-header">
+        <!-- <span>To: &nbsp;&nbsp;&nbsp; Ma'am Bella Jane B. Solis</span> -->
+        <span>To: &nbsp;&nbsp;&nbsp; </span>
+        <span>{% if user_entity == NULL %} ________ {% else %} {{ user_entity|upper }} {% endif %} of Municipality</span>
+        <span>Of M'lang, Cotabato</span>
+    </div>
+    <br>
+    <div class="header">
+        <h6 class="boldFont" style="text-align: center; margin: 0px; padding: 0px">CERTIFICATE OF FILE ACTION</h6>
+        <span>(Endorsement Letter)</span>
+    </div>
+    <br>
+    <div class="person-header">
+        <span class="boldFont">Sir/Ma'am:</span>
+    </div>
+    <br>
+    {% for info in complaint %}
+    <div class="main-body">
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Respectfully endorsing the case filed in this office between <span class="boldFont">{{ info.complainant.complainant_name }}</span> <span class="boldFont">(complainant)</span> a resident of {{ info.complainant.complainant_purok }}, {{ info.complainant.complainant_barangay }}, Mlang, Cotabato vs <span class="boldFont">{{ info.respondent.respondent_name }}</span> <span class="boldFont">(respondent)</span> a resisdent of {{ info.respondent.respondent_purok }}, {{ info.respondent.respondent_barangay }}, Mlang, Cotabato.</span>
+        <br>
+        <br>
+        <span>{{ info.complaint_desc }}</span>
+        <span>{{ info.settlement_desc }}</span>
+    </div>
+    {% endfor %}
+
+    <table>
+        <tr>
+            <td colspan="10">
+                <div>
+                    <br>
+                    <span style="text-decoration: underline;">Lerma E. Bandiola</span>
+                    <br>
+                    <span style="font-weight: bold;">&nbsp;Punong Barangay</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Officer's Return Form</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'dist/img/logo.png' %}">
+        <style type="text/css">
+            @page template {
+                size: a5 portrait;
+                left: 6cm;
+                right: 3cm;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+                font-family:'Times New Roman', Times, serif;
+                font-size: 12px;
+            } 
+
+            .header span{
+                display: block;
+                text-align: center;
+                line-height: 0px;
+                padding-bottom: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .add_border{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+
+            .lineHeight{
+                line-height: 1px;
+            }
+
+            .boldFont{
+                font-weight: bold;
+            }
+
+            .addLine{
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">OFFICER'S RETURN</h1>
+        {% for info in information %}
+        <div class="report_header">
+            <table>
+                <tr>
+                    <td colspan="50">
+                        <span>I served this summons upon respondent <span class="addLine boldFont">{{ info.respondent.respondent_name }}</span> on the <span class="boldFont">{{ current_date|date:'jS' }}</span> day of <span class="boldFont">{{ current_date|date:'F' }}</span>, <span class="boldFont">
+                            {{ current_date|date:'Y' }}
+                        </span>, and upon respodent <span class="addLine boldFont">{{ info.respondent.respondent_name }}</span> on the day of <span class="boldFont">{{ info.hearing_schedule|date:'jS' }}</span>, <span class="boldFont">{{ info.hearing_schedule|date:'F' }}</span> <span class="boldFont">
+                            {{ current_date|date:'Y' }}
+                        </span> by: </span>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <span>(Write name/s of respondent before mode by which he/they was/were served.)</span>
+
+            <table>
+                <tr>
+                    <br>
+                    <td>
+                        <b>Respondent/s</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>__________________________ 1.</span>
+                    </td>
+                    <td>
+                        <span>handling to him/them said summons in person, or</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>__________________________ 2.</span>
+                    </td>
+                    <td>
+                        <br>
+                        <span>handling to him/them said summons and he/they refused to received it,or</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>__________________________ 3.</span>
+                    </td>
+                    <td>
+                        <span>
+                            leaving said summons at his/their dwelling with ___________________ a person of suitable age and discretion residing therein, or
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>__________________________ 4.</span>
+                    </td>
+                    <td>
+                        <br>
+                        <span>
+                            leaving said summons at his/their office/place of business with _________________, a competent person in charge thereof.
+                        </span>
+                    </td>
+                </tr>
+            </table>
+
+            <table>  
+                <br>
+                <tr>
+                    <td colspan="29">
+                        <span>_________________________</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="29">
+                        <span class="boldFont">Officer</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="29">
+                        <br>
+                        <span>Received by respondent/s representative/s.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="30">
+                        <br>
+                        <span>__________________________</span>
+                    </td>
+                    <td colspan="30">
+                        <br>
+                        <span>__________________________</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="18">
+                        <span class="boldFont">Signature</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="17">
+                        <span class="boldFont">Date</span>
+                    </td>
+                </tr>
+               
+
+                <tr>
+                    <td colspan="30">
+                        <span>__________________________</span>
+                    </td>
+                    <td colspan="30">
+                        <span>__________________________</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="18">
+                        <span class="boldFont">Signature</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="17">
+                        <span class="boldFont">Date</span>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        {% endfor %}
+
+    </body>
+</html>

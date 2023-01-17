@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Amicable Settlement Form</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'dist/img/logo.png' %}">
+        <style type="text/css">
+            @page template {
+                size: a5 portrait;
+                left: 6cm;
+                right: 3cm;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+                font-family:'Times New Roman', Times, serif;
+                font-size: 12px;
+            }
+
+            .header span{
+                display: block;
+                text-align: center;
+                line-height: 0px;
+                padding-bottom: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .add_border{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+
+            .lineHeight{
+                line-height: 1px;
+            }
+
+            .boldFont{
+                font-weight: bold;
+            }
+
+            .addLine{
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        {% for info in information %}
+        <div class="header">
+            <span>Republic of the Philippines</span>
+            <span>Province of Cotabato</span>
+            <span>City/Municipality of Mlang</span>
+            <span>Barangay Dalipe, Mlang, North Cotabato</span>
+            <span>Office of the Lupong Tagapamayapa</span>
+        </div>
+
+        <span class="boldFont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Case No.</span> {{ info.case_no }}
+
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="add_border">
+                        <p class="lineHeight">{{ info.complainant.complainant_name }}</p>
+                    </div>
+                </td>
+                <td colspan="8">
+                </td>
+            </tr>
+        </table>
+
+        <span class="boldFont">Complainant/s</span>
+        <br>
+        <span class="boldFont">-- againts --</span>
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="add_border">
+                        <p class="lineHeight">{{ info.respondent.respondent_name }}</p>
+                    </div>
+                </td>
+                <td colspan="8"></td>
+            </tr>
+        </table>
+        <span class="boldFont">Respondent/s</span>
+
+
+            <h2 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">AMICABLE SETTLEMENT</h2>
+            <span>We complainant/s and respondent/s in the above-captioned case, do hereby agree to settle our dispute as follows.</span>
+            <p class="addLine">{{ info.settlement_desc }}</p>
+            <span> and bind ourselves to comply honestly and faithfully with the above terms of settlement.</span>
+
+        <table>
+            <tr>
+                <td colspan="6">
+                    <br>
+                    <span>Entered into this <span class="boldFont addLine">{{ current_date|date:'jS' }}</span> day of <span class="boldFont addLine">{{ current_date|date:'F' }}</span>, <span class="boldFont addLine">{{ current_date|date:'Y' }}</span>.</span>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="10">
+                    <div>
+                        <br>
+                        <span style="text-decoration: underline;">Lerma E. Bandiola</span>
+                        <br>
+                        <span style="font-weight: bold;">&nbsp;Punong Barangay</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        {% endfor %}
+    </body>
+</html>

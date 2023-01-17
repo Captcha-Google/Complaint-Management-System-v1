@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Complainant Form</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'dist/img/logo.png' %}">
+        <style type="text/css">
+            @page template {
+                size: a5 portrait;
+                left: 6cm;
+                right: 3cm;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+                font-family:'Times New Roman', Times, serif;
+                font-size: 12px;
+            }
+
+            .header span{
+                display: block;
+                text-align: center;
+                line-height: 0px;
+                padding-bottom: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .add_border{
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+            }
+
+            .lineHeight{
+                line-height: 1px;
+            }
+
+            .boldFont{
+                font-weight: bold;
+            }
+
+            .addLine{
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        {% for info in information %}
+        <div class="header">
+            <span>Republic of the Philippines</span>
+            <span>Province of Cotabato</span>
+            <span>City/Municipality of Mlang</span>
+            <span>Barangay Dalipe, Mlang, North Cotabato</span>
+            <span>Office of the Lupong Tagapamayapa</span>
+        </div>
+
+        <span class="boldFont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Case No.</span> {{ info.case_no }}
+
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="add_border">
+                        <p class="lineHeight">{{ info.complainant.complainant_name }}</p>
+                    </div>
+                </td>
+                <td colspan="8">
+                </td>
+            </tr>
+        </table>
+
+        <span class="boldFont">Complainant/s</span>
+        <br>
+        <span class="boldFont">-- againts --</span>
+
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="add_border">
+                        <p class="lineHeight">{{ info.respondent.respondent_name }}</p>
+                    </div>
+                </td>
+                <td colspan="8"></td>
+            </tr>
+        </table>
+        <span class="boldFont">Respondent/s</span>
+
+
+        <h3 style="text-align: center;">COMPLAINT</h3>
+        <span>I/We hereby complain against above named repondent/s for violating my/our rights and interest in the following manner:</span>
+        <p style="text-decoration: underline;">{{ info.complaint_desc }}</p>
+        <span>THEREFORE, I/We pray that the following relief/s be granted to me/us in accordance with law and/or equity:</span>
+        <p style="text-decoration: underline;">{{ info.settlement_desc }}</p>
+        <span>Make this <b>{{ info.date_complaint |date:'jS' }}</b> day of <b>{{ info.date_complaint |date:'F' }}</b>, <b>{{ info.date_complaint |date:'Y' }}</b></span>
+        <table>
+            <tr>
+                <td colspan="10">
+                    <div>
+                        <br>
+                        <span style="text-decoration: underline;">Lerma E. Bandiola</span>
+                        <br>
+                        <span style="font-weight: bold;">&nbsp;Punong Barangay</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        {% endfor %}
+
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<div class="modal fade" id="id_modalComplaint_change">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="id_modalComplaint_header">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="id_UpdateComplaintForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="hidden" name="complaint_id" id="complaint_id">
+                        <label for="{{ form.case_no.auto_id }}">{{ form.case_no.label }}</label>
+                        {{ form.case_no }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="{{ form.complainant.auto_id }}">{{ form.complainant.label }}</label>
+                        {{ form.complainant }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.complaint_type.auto_id }}">{{ form.complaint_type.label }}</label>
+                        {{ form.complaint_type }}
+                    </div>
+          
+                    <div class="form-group">
+                    <label for="{{ form.hearing_schedule.auto_id }}">{{ form.hearing_schedule.label }}</label>
+                    {{ form.hearing_schedule }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.complaint_status.auto_id }}">{{ form.complaint_status.label }}</label>
+                        {{ form.complaint_status }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.respondent.auto_id }}">{{ form.respondent.label }}</label>
+                        {{ form.respondent }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="{{ form.complaint_desc.auto_id }}">{{ form.complaint_desc.label }}</label>
+                        <textarea name="complaint_desc" cols="40" rows="10" maxlength="300" class="form-control" required="" id="id_complaint_desc" spellcheck="true"></textarea>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="{{ form.settlement_desc.auto_id }}">{{ form.settlement_desc.label }}</label>
+                        <textarea name="settlement_desc" cols="40" rows="10" maxlength="300" class="form-control" required="" id="id_settlement_desc" spellcheck="true"></textarea>
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

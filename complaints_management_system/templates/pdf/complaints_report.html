@@ -1,0 +1,71 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaints Report</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'dist/img/logo.png' %}">
+</head>
+<style>
+    @page{
+        size: a4 landscape;
+        padding: 10px;
+    }
+    body{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+    th, td {
+        padding: 5px;
+        text-align: center;
+    }
+
+    .header span{
+        display: block;
+        text-align: center;
+        line-height: 0px;
+        padding-bottom: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+</style>
+<body>
+
+    <div class="header">
+        <span>Republic of the Philippines</span>
+        <span>Province of Cotabato</span>
+        <span>City/Municipality of Mlang</span>
+        <span>Barangay Dalipe, Mlang, North Cotabato</span>
+        <span>Office of the Lupong Tagapamayapa</span>
+    </div>
+    <br>
+
+    <table style="border: 1px solid rgba(76, 76, 70, 0.133);">
+        <tr>
+            <th>Complainant</th>
+            <th>Respondent</th>
+            <th>Complainant Purok</th>
+            <th>Complaint Status</th>
+            <th>Complaint Type</th>
+            <th>Hearing Date</th>
+            <th>Remarks</th>
+            <th>Complaint Date</th>
+        </tr>
+       {% for info in information %}
+            <tr>
+                <td>{{ info.complainant }}</td>
+                <td>{{ info.respondent }}</td>
+                <td>{{ info.respondent.respondent_purok }}</td>
+                <td>{{ info.complaint_status }}</td>
+                <td>{{ info.complaint_type }}</td>
+                <td>{{ info.hearing_schedule }}</td>
+                <td>Proceed to Conciliation</td>
+                <td>{{ info.date_complaint }}</td>
+            </tr>
+       {% endfor %}
+    </table>
+
+    
+</body>
+</html>
